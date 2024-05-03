@@ -3,6 +3,8 @@ import { GameProps } from '@/utils/types/game';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BsArrowRightSquare } from 'react-icons/bs';
+import Input from '@/components/input';
+import GameCard from '@/components/gameCard';
 
 async function getLimaGame() {
   try {
@@ -14,8 +16,20 @@ async function getLimaGame() {
 
   }
 }
+
+async function getGameData() {
+  try {
+    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=games`, { next: { revalidate: 320 } })
+    return res.json()
+
+  } catch (error) {
+    throw new Error("Failed to fetch data");
+
+  }
+}
 export default async function Home() {
   const limaGame: GameProps = await getLimaGame();
+  const data: GameProps[] = await getGameData();
 
 
   return (
@@ -41,9 +55,15 @@ export default async function Home() {
                 sizes='(max-width:768px) 100vw, (max-width:1200px) 44vw' className='max-h-96 object-cover rounded-lg opacity-50 hover:opacity-100 transition-all duration-300 '
               />
             </div>
-
           </section>
         </Link>
+        <Input />
+        <h2 className='text-lg font-bold mt-8 mb-5'>Jogos para conhecer</h2>
+        <section className='grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+          {data.map((item) => (
+            <GameCard key={item.id} data={item} />
+          ))}
+        </section>
 
       </Container>
     </main >
