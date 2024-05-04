@@ -29,7 +29,7 @@ const Search = async ({
         <Input />
         <h1 className='font-bold text-xl mt-8 mb-5'>Veja oque encontramos em nossa base:</h1>
         {!games && (
-          <p>Este jogo não foi encontrado...</p>
+          <p>Este jogo não foi encontrado.</p>
         )}
         <section className='grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {games && games.map((item) => (
