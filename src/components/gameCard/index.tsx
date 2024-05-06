@@ -12,8 +12,8 @@ const GameCard = ({ data }: GameCardProps) => {
 
   return (
     <Link href={`game/${id}`}>
-      <section className="w-full bg-slate-200 p-4 mb-5">
-        <div className="relative w-full h-56 hover:scale-110 duration-300">
+      <section className="w-full bg-slate-200 p-4 mb-5 rounded-lg">
+        <div className="relative w-full h-56 hover:scale-105 duration-300">
           <Image
             src={image_url}
             alt={title}

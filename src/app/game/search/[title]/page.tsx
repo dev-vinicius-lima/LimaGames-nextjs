@@ -6,8 +6,9 @@ import React from 'react'
 
 async function getDataGames(title: string) {
   try {
+    const decodeTitle = decodeURI(title) // tirando unicode "%" dos espaços vazios
     const response = await fetch(
-      `${process.env.NEXT_API_URL}/next-api/?api=game&title=${title}`,
+      `${process.env.NEXT_API_URL}/next-api/?api=game&title=${decodeTitle}`,
       { next: { revalidate: 320 } },
     )
     return response.json()
