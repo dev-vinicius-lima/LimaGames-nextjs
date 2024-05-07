@@ -3,6 +3,12 @@ import Image from 'next/image'
 import React from 'react'
 import userImg from '../../../public/user.png'
 import { FaShareAlt } from 'react-icons/fa'
+import FavoriteCard from './components/favorite'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Meu perfil - LimaGames sua plataforma de jogos',
+}
 const Profile = () => {
   return (
     <main className="w-full text-black">
@@ -23,6 +29,17 @@ const Profile = () => {
             <button className="bg-gray-700 px-4 py-3 rounded-lg">
               <FaShareAlt size={24} color="#fff" />
             </button>
+          </div>
+        </section>
+        <section className="flex flex-wrap gap-5 flex-col md:flex-row">
+          <div className="flex-grow flex-wrap">
+            <FavoriteCard />
+          </div>
+          <div className="flex-grow flex-wrap">
+            <FavoriteCard />
+          </div>
+          <div className="flex-grow flex-wrap">
+            <FavoriteCard />
           </div>
         </section>
       </Container>
